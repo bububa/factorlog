@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"regexp"
-
-	"github.com/mgutz/ansi"
+	"github.com/bububa/ansi"
 )
 
 // Can hold 63 flags
@@ -412,7 +411,8 @@ func (f *StdFormatter) Format(context LogContext) []byte {
 			if l > ca {
 				f.stmp = make([]byte, 0, l)
 			} else if ca > 8000 { // don't let memory usage get too big
-				f.stmp = f.stmp[0:0:l]
+				//f.stmp = f.stmp[0:0:l]
+				f.stmp = make([]byte, 0, l)
 			}
 
 			for _, c := range message {
